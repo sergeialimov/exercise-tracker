@@ -1,10 +1,17 @@
 import Hapi from '@hapi/hapi';
 import routes from '../src/routes';
 
+let hostName;
+if (process.env.NODE_ENV === 'dev') {
+  hostName = {
+    host:'localhost',
+  }
+};
+
 const init = async () => {
   const server = Hapi.server({
-    port: 3000,
-    host: 'localhost'
+    port: process.env.PORT || 8080,
+    ...hostName,
   });
 
     server.route(routes);
