@@ -5,8 +5,7 @@ export default {
     const { username } = request.query;
     return hapi.response({
       username,
-      _id: 1,
-      message: 'User successfuly created',
+      _id: '156',
     }).code(200);
   },
   options: {
