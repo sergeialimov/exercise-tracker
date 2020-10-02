@@ -5,7 +5,7 @@ export default {
     const { username } = request.query;
     return hapi.response({
       username,
-      _id: '156',
+      _id: Math.random().toString(36).substring(7),
     }).code(200);
   },
   options: {
