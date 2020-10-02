@@ -1,5 +1,6 @@
 import Hapi from '@hapi/hapi';
 import routes from '../src/routes';
+import DB from '../src/db/index.js';
 
 let hostName;
 if (process.env.NODE_ENV === 'dev') {
@@ -14,10 +15,10 @@ const init = async () => {
     ...hostName,
   });
 
-    server.route(routes);
-    await server.start(
-  );
+  server.route(routes);
+  await server.start();
   console.log('Server running on %s', server.info.uri);
+  DB.connect();
 };
 
 
