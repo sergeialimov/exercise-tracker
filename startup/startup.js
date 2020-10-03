@@ -2,6 +2,8 @@ import Hapi from '@hapi/hapi';
 import routes from '../src/routes';
 import DB from '../src/db/index.js';
 
+const connectDB = DB;
+
 let hostName;
 if (process.env.NODE_ENV === 'dev') {
   hostName = {
@@ -18,7 +20,7 @@ const init = async () => {
   server.route(routes);
   await server.start();
   console.log('Server running on %s', server.info.uri);
-  DB.connect();
+  connectDB();
 };
 
 
