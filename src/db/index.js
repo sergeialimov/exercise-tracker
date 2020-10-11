@@ -17,6 +17,7 @@ const sequelize = new Sequelize(dbName, user, password, {
 
 const modelDefiners = [
   require('./models/User.js'),
+  require('./models/Exercise.js'),
 ];
 
 for (const modelDefiner of modelDefiners) {
