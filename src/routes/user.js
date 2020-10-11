@@ -7,13 +7,13 @@ export default {
   handler: async (request, hapi) => {
     const { username } = request.query;
 
-    await User.create({
+    const user = await User.create({
       username,
-    })
+    });
 
     return hapi.response({
-      username,
-      _id: Math.random().toString(36).substring(7),
+      username: user.username,
+      _id: user._id,
     }).code(200);
   },
   options: {
