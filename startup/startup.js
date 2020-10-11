@@ -1,8 +1,6 @@
 import Hapi from '@hapi/hapi';
 import routes from '../src/routes';
-import DB from '../src/db/index.js';
-
-const connectDB = DB;
+import sequelize from '../src/db/index.js';
 
 let hostName;
 if (process.env.NODE_ENV === 'dev') {
@@ -17,10 +15,16 @@ const init = async () => {
     ...hostName,
   });
 
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  };
+
   server.route(routes);
   await server.start();
   console.log('Server running on %s', server.info.uri);
-  connectDB();
 };
 
 
