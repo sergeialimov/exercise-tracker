@@ -11,9 +11,9 @@ const sequelize = new Sequelize(dbName, user, password, {
   dialect: 'postgres',
 });
 
-// (async () => {
-//   await sequelize.sync({ force: true });
-// })();
+(async () => {
+  await sequelize.sync({ force: true });
+})();
 
 const modelDefiners = [
   require('./models/User.js'),
