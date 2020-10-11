@@ -1,7 +1,13 @@
 import { Sequelize } from 'sequelize';
+import db from '../../config/credentials.js';
 
-const sequelize = new Sequelize('tracker', 'sa', '', {
-  host: 'localhost',
+const config = (process.env.NODE_ENV === 'dev') ? db.local : db.heroku;
+
+const { dbName, user, password, host } = config;
+
+
+const sequelize = new Sequelize(dbName, user, password, {
+  host,
   dialect: 'postgres',
 });
 
