@@ -2,7 +2,7 @@ const sequelize = require('../db/index.js');
 const { User } = sequelize.default.models;
 
 export default {
-  method: 'POST',
+  method: 'GET',
   path: '/api/exercise/users',
   handler: async (request, hapi) => {
     const users = await User.findAll();
