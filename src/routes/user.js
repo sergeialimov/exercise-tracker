@@ -17,7 +17,7 @@ export default {
     }).code(200);
   },
   options: {
-    description: 'Update user password',
+    description: 'Add new user',
     tags: [ 'api' ],
   },
 };

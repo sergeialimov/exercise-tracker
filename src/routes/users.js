@@ -12,7 +12,7 @@ export default {
     }).code(200);
   },
   options: {
-    description: 'Update user password',
+    description: 'Find all users',
     tags: [ 'api' ],
   },
 };
