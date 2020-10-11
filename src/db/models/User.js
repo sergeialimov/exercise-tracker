@@ -1,14 +1,22 @@
-module.exports = (sequelize, DataTypes) => {
+import { DataTypes } from 'sequelize';
+
+module.exports = (sequelize) => {
   const User = sequelize.define("User", {
     _id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
-      primaryKey: true
+      primaryKey: true,
+      allowNull: false,
     },
-    name: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true
+      unique: true,
+      validate: {
+        // We require usernames to have length of at least 3, and
+        // only use letters, numbers and underscores.
+        is: /^\w{3,}$/
+      }
     }
   });
 
