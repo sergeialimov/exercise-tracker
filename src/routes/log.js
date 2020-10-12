@@ -11,7 +11,13 @@ export default {
           userId: request.query.userId,
         },
       });
-      return hapi.response(exercises).code(200);
+      return hapi.response(
+      {
+        user: {
+          log: exercises,
+          count: exercises.length,
+        }
+      }).code(200);
     } catch (err) {
       console.log(err);
     }
