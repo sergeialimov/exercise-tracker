@@ -1,4 +1,4 @@
-import { DataTypes } from 'sequelize';
+import { DataTypes, Sequelize } from 'sequelize';
 
 module.exports = (sequelize) => {
   const Exercise = sequelize.define("Exercise", {
@@ -21,7 +21,8 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     date: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
+      defaultValue: Sequelize.NOW,
       allowNull: false,
     }
   });
