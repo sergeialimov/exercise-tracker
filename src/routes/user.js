@@ -6,7 +6,7 @@ export default {
   path: '/api/exercise/new-user',
   handler: async (request, hapi) => {
     try {
-      const { username } = request.query;
+      const { username } = request.payload;
 
       const user = await User.create({
         username,
