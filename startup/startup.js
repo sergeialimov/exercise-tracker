@@ -11,11 +11,12 @@ if (process.env.NODE_ENV === 'dev') {
 
 const init = async () => {
   const server = Hapi.server({
-    port: process.env.PORT || 8080,
+    port: process.env.PORT || 8090,
     ...hostName,
     routes: {
       cors: {
         origin: [ '*'],
+        additionalHeaders: ['cache-control', 'x-requested-with'],
         credentials: true,
       }
     }
